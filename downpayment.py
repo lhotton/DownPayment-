@@ -20,16 +20,16 @@ def calculate_current_savings(portion_saved):
 if calculate_current_savings(1) >= down_payment: #checks to see if you can afford downpayment by saving 100% of salary
     epsilon = 100
     low = 0
-    high = 10000
-    portion_saved = (low + high)/2/10000
+    high = 1
+    portion_saved = (low + high)/2
     num_guesses = 0
 
     while abs(calculate_current_savings(portion_saved)-down_payment) >= epsilon: #loop ends once you are 100$ within price of downpayement
         if calculate_current_savings(portion_saved) > down_payment:
-            high = portion_saved * 10000
+            high = portion_saved
         else:
-            low = portion_saved * 10000
-        portion_saved = (low + high)/2/10000
+            low = portion_saved
+        portion_saved = (low + high)/2
         num_guesses += 1
     
     print('you should save',str(round((portion_saved*100),2))+'%','of your monthly salary')
